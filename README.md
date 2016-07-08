@@ -8,10 +8,10 @@ This is a code base of todo-api's examples written in ES6 for study purposes.
 * [express-mongoose-api](https://github.com/caio-ribeiro-pereira/node-api-examples/tree/master/express-mongoose-api)
 * [express-rethinkdb-api](https://github.com/caio-ribeiro-pereira/node-api-examples/tree/master/express-rethinkdb-api)
 * [express-sequelize-api](https://github.com/caio-ribeiro-pereira/node-api-examples/tree/master/express-sequelize-api)
+* [express-knex-api](https://github.com/caio-ribeiro-pereira/node-api-examples/tree/master/express-knex-api)
 
 ## TODO
 
-* **express-knex-api**
 * **express-redis-api**
 * **express-leveldb-api**
 * **hapi-mongoose-api**
