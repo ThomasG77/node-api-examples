@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   isTest: false,
   server: {
     port: 3000,
