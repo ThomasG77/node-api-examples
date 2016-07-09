@@ -1,5 +1,7 @@
-describe('Routes: Tasks', () => {
+/* global describe, before, after, beforeEach, it */
+/* global expect, app, config, request */
 
+describe('Routes: Tasks', () => {
   const Tasks = app.models.tasks;
   const tasks = [
     { id: 1, name: 'study hard!', done: false },
@@ -7,7 +9,7 @@ describe('Routes: Tasks', () => {
   ];
 
   beforeEach(done => {
-    Tasks.destroy({ where: {}}).then(() => {
+    Tasks.destroy({ where: {} }).then(() => {
       Tasks.bulkCreate(tasks).then(() => done());
     });
   });
@@ -35,7 +37,7 @@ describe('Routes: Tasks', () => {
           .expect(200)
           .end((err, res) => {
             expect(res.body.name).to.eql('run fast!');
-            expect(res.body.done).to.be.false;
+            expect(res.body.done).to.eql(false);
             done(err);
           });
       });
@@ -59,7 +61,7 @@ describe('Routes: Tasks', () => {
       it('throws error when task not exist', done => {
         request.get('/tasks/id-not-exist')
           .expect(404)
-          .end((err, res) => done(err));
+          .end(err => done(err));
       });
     });
   });
@@ -73,7 +75,7 @@ describe('Routes: Tasks', () => {
           .end((err, res) => {
             expect(res.body.id).to.eql(tasks[0].id);
             expect(res.body.name).to.eql('travel a lot!');
-            expect(res.body.done).to.be.true;
+            expect(res.body.done).to.eql(true);
             done(err);
           });
       });
@@ -85,7 +87,7 @@ describe('Routes: Tasks', () => {
       it('removes a task', done => {
         request.delete(`/tasks/${tasks[0].id}`)
           .expect(204)
-          .end((err, res) => done(err));
+          .end(err => done(err));
       });
     });
   });
