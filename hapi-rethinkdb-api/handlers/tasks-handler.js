@@ -1,10 +1,5 @@
 import Joi from 'joi';
 import Boom from 'boom';
-import r from 'rethinkdb';
-import config from '../config';
-
-// Helpers
-import db from '../helpers/db';
 
 // Models
 import TasksModel from '../models/tasks';
@@ -54,12 +49,7 @@ exports.register = (server, options, next) => {
       });
     },
     config: {
-      validate: {
-        payload: {
-          "name": Joi.string().required(),
-          "done": Joi.boolean().required()
-        }
-      }
+      validate: Tasks.validate()
     }
   });
 
@@ -77,12 +67,7 @@ exports.register = (server, options, next) => {
       });
     },
     config: {
-      validate: {
-        payload: {
-          "name": Joi.string().required(),
-          "done": Joi.boolean().required()
-        }
-      }
+      validate: Tasks.validate()
     }
   });
 
