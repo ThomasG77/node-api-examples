@@ -7,7 +7,7 @@
     "start": "NODE_ENV=development nodemon index.js --exec babel-node",
     "test": "NODE_ENV=test mocha test/**/*.js"
   },
-  "author": "Caio Ribeiro Pereira",
+  "author": "Itacir Ferreira Pompeu <itacir@hotmail.com>",
   "license": "MIT",
   "dependencies": {
     "body-parser": "1.15.2",
