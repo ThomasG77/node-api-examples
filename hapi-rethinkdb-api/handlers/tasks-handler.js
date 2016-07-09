@@ -1,9 +1,5 @@
 import Joi from 'joi';
 import Boom from 'boom';
-import config from '../config';
-
-// Helpers
-import db from '../helpers/db';
 
 // Models
 import TasksModel from '../models/tasks';

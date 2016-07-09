@@ -1,7 +1,6 @@
 import r from 'rethinkdb';
 import Joi from 'joi';
 import config from '../config.js';
-import db from '../helpers/db';
 
 export default class Tasks {
   constructor() {
@@ -18,7 +17,7 @@ export default class Tasks {
   }
 
   list(done) {
-    db.connect().then((dbConn) => {
+    r.connect(config.rethinkdb).then((dbConn) => {
       r.table(this.tableName)
         .run(dbConn)
         .then(cursor => {
@@ -32,7 +31,7 @@ export default class Tasks {
   }
 
   get(taskId, done) {
-    db.connect().then((dbConn) => {
+    r.connect(config.rethinkdb).then((dbConn) => {
       r.table(this.tableName)
         .get(taskId)
         .run(dbConn)
@@ -42,7 +41,7 @@ export default class Tasks {
   }
 
   insert(task, done) {
-    db.connect().then((dbConn) => {
+    r.connect(config.rethinkdb).then((dbConn) => {
       r.table(this.tableName)
         .insert(task)
         .run(dbConn)
@@ -59,7 +58,7 @@ export default class Tasks {
   }
 
   update(taskId, task, done) {
-    db.connect().then((dbConn) => {
+    r.connect(config.rethinkdb).then((dbConn) => {
       r.table(this.tableName)
         .get(taskId)
         .update(task, config.model.update)
@@ -73,7 +72,7 @@ export default class Tasks {
   }
 
   delete(taskId, done) {
-    db.connect().then((dbConn) => {
+    r.connect(config.rethinkdb).then((dbConn) => {
       r.table(this.tableName)
         .get(taskId)
         .delete()
