@@ -2,7 +2,7 @@ import r from 'rethinkdb';
 import val from 'lx-valid';
 import config from '../config.js';
 
-module.exports = (app, conn) => {
+module.exports = () => {
   const Tasks = {
     tableName: 'tasks',
     fields: {
