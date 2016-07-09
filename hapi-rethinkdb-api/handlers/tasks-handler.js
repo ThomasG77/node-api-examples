@@ -1,6 +1,5 @@
 import Joi from 'joi';
 import Boom from 'boom';
-import r from 'rethinkdb';
 import config from '../config';
 
 // Helpers
