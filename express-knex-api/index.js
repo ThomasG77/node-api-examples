@@ -31,4 +31,4 @@ app.listen(config.server.port, () => {
   }
 });
 
-module.exports = app;
+export default app;
