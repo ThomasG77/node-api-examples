@@ -1,18 +1,19 @@
 import Hapi from 'hapi';
-import config from './config';
-import handlers from './handlers';
+import config from './config.js';
+import handlers from './handlers.js';
 
 const server = new Hapi.Server();
-const { host, port } = config.server;
 
-server.connection({ host, port });
+server.connection(config.server);
 
 server.register(handlers, (err) => {
   if (err) throw err;
 
   server.start(() => {
-    console.log('Hapi-RethinkDB TODO API');
-    console.log(`Address: http://localhost:${server.info.port}`);
+    if (!config.isTest) {
+      console.log('Hapi-RethinkDB TODO API');
+      console.log(`Address: ${config.server.host}:${config.server.port}`);
+    }
   });
 });
 

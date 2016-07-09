@@ -1,8 +1,6 @@
-import Joi from 'joi';
 import Boom from 'boom';
+import TasksModel from '../models/tasks.js';
 
-// Models
-import TasksModel from '../models/tasks';
 const Tasks = new TasksModel();
 
 exports.register = (server, options, next) => {

@@ -1,5 +1,7 @@
-describe('Handler: Tasks', () => {
+/* global describe, before, after, beforeEach, it */
+/* global expect, r, config, server */
 
+describe('Handler: Tasks', () => {
   const tasks = [
     { id: '1', name: 'study hard!', done: false },
     { id: '2', name: 'work soft!', done: false }
@@ -15,7 +17,7 @@ describe('Handler: Tasks', () => {
     r.connect(config.rethinkdb).then((conn) => {
       r.tableDrop('tasks').run(conn, done);
     });
-  })
+  });
 
   beforeEach(done => {
     r.connect(config.rethinkdb).then((conn) => {
@@ -31,7 +33,7 @@ describe('Handler: Tasks', () => {
         server.inject({
           method: 'GET',
           url: '/tasks'
-        }, function (res) {
+        }, (res) => {
           expect(res.statusCode).to.eql(200);
           expect(res.result).to.have.length(2);
           done();
@@ -47,26 +49,26 @@ describe('Handler: Tasks', () => {
           method: 'POST',
           url: '/tasks',
           payload: {
-            "name": "run fast!",
-            "done": false
+            name: 'run fast!',
+            done: false
           }
-        }, function (res) {
+        }, (res) => {
           expect(res.statusCode).to.eql(200);
           expect(res.result.name).to.eql('run fast!');
-          expect(res.result.done).to.be.false;
+          expect(res.result.done).to.eql(false);
           done();
         });
       });
     });
   });
 
-  describe('GET /tasks/{id}', () => {
+  describe('GET /tasks/:id', () => {
     describe('status 200', () => {
       it('returns one task', done => {
         server.inject({
           method: 'GET',
           url: `/tasks/${tasks[0].id}`
-        }, function (res) {
+        }, (res) => {
           expect(res.statusCode).to.eql(200);
           expect(res.result.id).to.eql(tasks[0].id);
           expect(res.result.name).to.eql(tasks[0].name);
@@ -80,7 +82,7 @@ describe('Handler: Tasks', () => {
         server.inject({
           method: 'GET',
           url: '/tasks/id-not-exist'
-        }, function (res) {
+        }, (res) => {
           expect(res.statusCode).to.eql(404);
           done();
         });
@@ -95,14 +97,14 @@ describe('Handler: Tasks', () => {
           method: 'PUT',
           url: `/tasks/${tasks[0].id}`,
           payload: {
-            "name": "travel a lot!",
-            "done": true
+            name: 'travel a lot!',
+            done: true
           }
-        }, function (res) {
+        }, (res) => {
           expect(res.statusCode).to.eql(200);
           expect(res.result.id).to.eql(tasks[0].id);
           expect(res.result.name).to.eql('travel a lot!');
-          expect(res.result.done).to.be.true;
+          expect(res.result.done).to.eql(true);
           done();
         });
       });
@@ -115,7 +117,7 @@ describe('Handler: Tasks', () => {
         server.inject({
           method: 'DELETE',
           url: `/tasks/${tasks[0].id}`
-        }, function (res) {
+        }, (res) => {
           expect(res.statusCode).to.eql(204);
           done();
         });

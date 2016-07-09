@@ -5,7 +5,7 @@ export default {
     host: 'localhost'
   },
   rethinkdb: {
-    db: 'hapi_rethinkdb',
+    db: 'hapi_rethinkdb_test',
     host: 'localhost',
     port: 28015
   },
