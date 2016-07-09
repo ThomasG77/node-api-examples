@@ -5,6 +5,5 @@ module.exports = () => {
     name: { type: String, trim: true, required: true },
     done: { type: Boolean }
   });
-
   return mongoose.model('tasks', schema);
 };

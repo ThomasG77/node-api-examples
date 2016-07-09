@@ -4,16 +4,13 @@
     "es6": true,
     "node": true
   },
-  "parser": "babel-eslint",
-  "parserOptions": {
-    "sourceType": "module",
-    "allowImportExportEverywhere": false
-  },
+  "extends": "airbnb-base",
   "rules" : {
     "comma-dangle": [2, "never"],
     "indent": ["error", 2],
     "prefer-template": 2,
     "no-console": 0,
-    "new-cap": 0
+    "new-cap": 0,
+    "no-underscore-dangle": 0
   }
 }
