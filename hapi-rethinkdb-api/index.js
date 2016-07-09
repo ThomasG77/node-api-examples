@@ -1,8 +1,15 @@
+import fs from 'fs';
 import Hapi from 'hapi';
 import config from './config.js';
-import handlers from './handlers.js';
 
 const server = new Hapi.Server();
+
+const handlers = [];
+
+fs.readdirSync('./handlers').forEach(file => {
+  const path = `./handlers/${file}`;
+  handlers.push(require(path));
+});
 
 server.connection(config.server);
 
