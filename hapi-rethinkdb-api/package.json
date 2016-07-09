@@ -14,7 +14,6 @@
     "boom": "3.2.2",
     "hapi": "13.5.0",
     "joi": "8.4.2",
-    "lx-valid": "1.2.0",
     "rethinkdb": "2.3.2"
   },
   "devDependencies": {
