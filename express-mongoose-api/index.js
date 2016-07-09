@@ -10,6 +10,7 @@ import config from './config.js';
 const app = express();
 
 mongoose.connect(config.mongodb.uri);
+
 app.use(morgan('common', { skip: () => config.isTest }));
 app.use(helmet());
 app.use(bodyParser.urlencoded(config.bodyParser));
@@ -24,9 +25,9 @@ consign(config.consign)
 
 app.listen(config.server.port, () => {
   if (!config.isTest) {
-    console.log('Express-MongoDB TODO API');
+    console.log('Express-Mongoose TODO API');
     console.log(`Address: ${config.server.host}:${config.server.port}`);
   }
 });
 
-module.exports = app;
+export default app;

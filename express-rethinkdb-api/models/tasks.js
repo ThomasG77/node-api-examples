@@ -2,7 +2,7 @@ import r from 'rethinkdb';
 import val from 'lx-valid';
 import config from '../config.js';
 
-module.exports = (app, dbConn) => {
+module.exports = () => {
   const Tasks = {
     tableName: 'tasks',
     fields: {
@@ -24,40 +24,52 @@ module.exports = (app, dbConn) => {
       return validate(data, this.fields, schema);
     },
     list(done) {
-      r.table(this.tableName)
-        .run(dbConn)
-        .then(cursor => {
-          cursor.toArray()
-            .then(tasks => done(null, tasks))
+      r.connect(config.rethinkdb)
+        .then(conn => {
+          r.table(this.tableName)
+            .run(conn)
+            .then(cursor => {
+              cursor.toArray()
+                .then(tasks => done(null, tasks))
+                .error(err => done(err))
+              ;
+            })
             .error(err => done(err))
           ;
         })
-        .error(err => done(err))
       ;
     },
     get(taskId, done) {
-      r.table(this.tableName)
-        .get(taskId)
-        .run(dbConn)
-        .then(task => done(null, task))
-        .error(err => done(err))
+      r.connect(config.rethinkdb)
+        .then(conn => {
+          r.table(this.tableName)
+            .get(taskId)
+            .run(conn)
+            .then(task => done(null, task))
+            .error(err => done(err))
+          ;
+        })
       ;
     },
     insert(task, done) {
       const validation = this.validate(task, false);
       if (validation.valid) {
-        r.table(this.tableName)
-          .insert(task)
-          .run(dbConn)
-          .then(result => {
+        r.connect(config.rethinkdb)
+          .then(conn => {
             r.table(this.tableName)
-              .get(result.generated_keys[0])
-              .run(dbConn)
-              .then(newTask => done(null, newTask))
+              .insert(task)
+              .run(conn)
+              .then(result => {
+                r.table(this.tableName)
+                  .get(result.generated_keys[0])
+                  .run(conn)
+                  .then(newTask => done(null, newTask))
+                  .error(err => done(err))
+                ;
+              })
               .error(err => done(err))
             ;
           })
-          .error(err => done(err))
         ;
       } else {
         done(validation.errors);
@@ -66,27 +78,35 @@ module.exports = (app, dbConn) => {
     update(taskId, task, done) {
       const validation = this.validate(task, true);
       if (validation.valid) {
-        r.table(this.tableName)
-          .get(taskId)
-          .update(task, config.model.update)
-          .run(dbConn)
-          .then(result => {
-            const { new_val } = result.changes[0] || {};
-            done(null, new_val);
+        r.connect(config.rethinkdb)
+          .then(conn => {
+            r.table(this.tableName)
+              .get(taskId)
+              .update(task, config.model.update)
+              .run(conn)
+              .then(result => {
+                const { new_val } = result.changes[0] || {};
+                done(null, new_val);
+              })
+              .error(err => done(err))
+            ;
           })
-          .error(err => done(err))
         ;
       } else {
         done(validation.errors);
       }
     },
     delete(taskId, done) {
-      r.table(this.tableName)
-        .get(taskId)
-        .delete()
-        .run(dbConn)
-        .then(() => done(null))
-        .error(err => done(err))
+      r.connect(config.rethinkdb)
+        .then(conn => {
+          r.table(this.tableName)
+            .get(taskId)
+            .delete()
+            .run(conn)
+            .then(() => done(null))
+            .error(err => done(err))
+          ;
+        })
       ;
     }
   };

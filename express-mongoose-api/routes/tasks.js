@@ -40,12 +40,13 @@ module.exports = app => {
       if (err) {
         return res.status(412).json(err);
       }
-      Tasks.findById(taskId, (err, newTask) => {
-        if (err) {
+      Tasks.findById(taskId, (findErr, newTask) => {
+        if (findErr) {
           return res.status(412).json(err);
         }
         return res.json(newTask);
       });
+      return true;
     });
   });
 

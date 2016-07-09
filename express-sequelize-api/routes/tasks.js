@@ -32,7 +32,7 @@ module.exports = app => {
   app.put('/tasks/:taskId', (req, res) => {
     const { taskId } = req.params;
     const task = req.body;
-    Tasks.update(task, { where: { id: taskId }})
+    Tasks.update(task, { where: { id: taskId } })
       .then(() => {
         Tasks.findById(+taskId)
           .then(newTask => res.json(newTask))
@@ -45,7 +45,7 @@ module.exports = app => {
 
   app.delete('/tasks/:taskId', (req, res) => {
     const { taskId } = req.params;
-    Tasks.destroy({ where: { id: taskId }})
+    Tasks.destroy({ where: { id: taskId } })
       .then(() => res.status(204).end())
       .error(err => res.status(412).json(err))
     ;
