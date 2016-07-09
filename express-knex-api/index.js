@@ -4,7 +4,7 @@ import bodyParser from 'body-parser';
 import compression from 'compression';
 import helmet from 'helmet';
 import morgan from 'morgan';
-import Knex from 'knex'
+import Knex from 'knex';
 import config from './config.js';
 
 const app = express();

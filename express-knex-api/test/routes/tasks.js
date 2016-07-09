@@ -1,5 +1,7 @@
-describe('Routes: Tasks', () => {
+/* global describe, before, after, beforeEach, it */
+/* global expect, knex, config, request */
 
+describe('Routes: Tasks', () => {
   const tasks = [
     { id: 1, name: 'study hard!', done: 0 },
     { id: 2, name: 'work soft!', done: 0 }
@@ -65,7 +67,7 @@ describe('Routes: Tasks', () => {
       it('throws error when task not exist', done => {
         request.get('/tasks/id-not-exist')
           .expect(404)
-          .end((err, res) => done(err));
+          .end(err => done(err));
       });
     });
   });
@@ -91,7 +93,7 @@ describe('Routes: Tasks', () => {
       it('removes a task', done => {
         request.delete(`/tasks/${tasks[0].id}`)
           .expect(204)
-          .end((err, res) => done(err));
+          .end(err => done(err));
       });
     });
   });

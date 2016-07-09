@@ -46,8 +46,9 @@ module.exports = (app, knex) => {
             knex.select('*')
               .from(this.tableName)
               .where({ id: result[0] })
-              .then(task => done(null, task[0]))
+              .then(newTask => done(null, newTask[0]))
               .catch(err => done(err))
+            ;
           })
           .catch(err => done(err))
         ;
@@ -65,8 +66,9 @@ module.exports = (app, knex) => {
             knex.select('*')
               .from(this.tableName)
               .where({ id: taskId })
-              .then(task => done(null, task[0]))
+              .then(newTask => done(null, newTask[0]))
               .catch(err => done(err))
+            ;
           })
           .catch(err => done(err))
         ;
