@@ -6,19 +6,19 @@ describe('Handler: Tasks', () => {
   ];
 
   before(done => {
-    r.connect(config.rethinkdb, (err, conn) => {
+    db.connect().then((conn) => {
       r.tableCreate('tasks').run(conn, done);
     });
   });
 
   after(done => {
-    r.connect(config.rethinkdb, (err, conn) => {
+    db.connect().then((conn) => {
       r.tableDrop('tasks').run(conn, done);
     });
   })
 
   beforeEach(done => {
-    r.connect(config.rethinkdb, (err, conn) => {
+    db.connect().then((conn) => {
       r.table('tasks').delete().run(conn, () => {
         r.table('tasks').insert(tasks).run(conn, done);
       });
