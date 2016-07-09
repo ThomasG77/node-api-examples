@@ -10,9 +10,6 @@ export default {
     port: 28015
   },
   model: {
-    schema: {
-      unknownProperties: 'delete'
-    },
     update: {
       returnChanges: true
     }

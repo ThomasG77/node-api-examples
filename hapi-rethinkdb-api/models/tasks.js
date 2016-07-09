@@ -1,10 +1,20 @@
 import r from 'rethinkdb';
+import Joi from 'joi';
 import config from '../config.js';
 import db from '../helpers/db';
 
 export default class Tasks {
   constructor() {
     this.tableName = 'tasks';
+  }
+
+  validate() {
+    return {
+      payload: {
+        "name": Joi.string().required(),
+        "done": Joi.boolean().default(false)
+      }
+    }
   }
 
   list(done) {

@@ -53,12 +53,7 @@ exports.register = (server, options, next) => {
       });
     },
     config: {
-      validate: {
-        payload: {
-          "name": Joi.string().required(),
-          "done": Joi.boolean().required()
-        }
-      }
+      validate: Tasks.validate()
     }
   });
 
@@ -76,12 +71,7 @@ exports.register = (server, options, next) => {
       });
     },
     config: {
-      validate: {
-        payload: {
-          "name": Joi.string().required(),
-          "done": Joi.boolean().required()
-        }
-      }
+      validate: Tasks.validate()
     }
   });
 
