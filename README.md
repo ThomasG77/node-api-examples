@@ -11,15 +11,27 @@ This is a code base of todo-api's examples written in ES6 for study purposes.
 * [express-knex-api](https://github.com/caio-ribeiro-pereira/node-api-examples/tree/master/express-knex-api)
 * [express-leveldb-api](https://github.com/caio-ribeiro-pereira/node-api-examples/tree/master/express-leveldb-api)
 * [hapi-rethinkdb-api](https://github.com/caio-ribeiro-pereira/node-api-examples/tree/master/hapi-rethinkdb-api)
+* [hapi-leveldb-api](https://github.com/caio-ribeiro-pereira/node-api-examples/tree/master/hapi-leveldb-api)
 
 ## TODO
 
+* **express-couchdb-api**
+* **express-neo4j-api**
 * **express-redis-api**
 * **hapi-mongoose-api**
 * **hapi-sequelize-api**
 * **hapi-knex-api**
 * **hapi-redis-api**
-* **hapi-leveldb-api**
+* **hapi-couchdb-api**
+* **hapi-neo4j-api**
+* **koa-mongoose-api**
+* **koa-knex-api**
+* **koa-sequelize-api**
+* **koa-rethinkdb-api**
+* **koa-leveldb-api**
+* **koa-redis-api**
+* **koa-couchdb-api**
+* **koa-neo4j-api**
 
 ## Setup
 
