@@ -29,7 +29,7 @@ exports.register = (server, options, next) => {
         if (task) {
           return reply(task);
         }
-        return reply(Boom.notFound('task not found'));
+        return reply().code(404);
       });
     }
   });
