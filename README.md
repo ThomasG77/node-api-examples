@@ -11,6 +11,7 @@ This is a code base of todo-api's examples written in ES6 for study purposes.
 * [express-sequelize-api](https://github.com/caio-ribeiro-pereira/node-api-examples/tree/master/express-sequelize-api)
 * [express-knex-api](https://github.com/caio-ribeiro-pereira/node-api-examples/tree/master/express-knex-api)
 * [express-leveldb-api](https://github.com/caio-ribeiro-pereira/node-api-examples/tree/master/express-leveldb-api)
+* [hapi-mongoose-api](https://github.com/caio-ribeiro-pereira/node-api-examples/tree/master/hapi-mongoose-api)
 * [hapi-rethinkdb-api](https://github.com/caio-ribeiro-pereira/node-api-examples/tree/master/hapi-rethinkdb-api)
 * [hapi-leveldb-api](https://github.com/caio-ribeiro-pereira/node-api-examples/tree/master/hapi-leveldb-api)
 
@@ -18,7 +19,6 @@ This is a code base of todo-api's examples written in ES6 for study purposes.
 
 * **express-couchdb-api**
 * **express-neo4j-api**
-* **hapi-mongoose-api**
 * **hapi-sequelize-api**
 * **hapi-knex-api**
 * **hapi-redis-api**
