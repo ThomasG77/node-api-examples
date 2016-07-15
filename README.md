@@ -15,6 +15,7 @@ This is a code base of todo-api's examples written in ES6 for study purposes.
 * [hapi-rethinkdb-api](https://github.com/caio-ribeiro-pereira/node-api-examples/tree/master/hapi-rethinkdb-api)
 * [hapi-leveldb-api](https://github.com/caio-ribeiro-pereira/node-api-examples/tree/master/hapi-leveldb-api)
 * [hapi-redis-api](https://github.com/caio-ribeiro-pereira/node-api-examples/tree/master/hapi-redis-api)
+* [koa-rethinkdb-api](https://github.com/caio-ribeiro-pereira/node-api-examples/tree/master/koa-rethinkdb-api)
 
 ## TODO
 
@@ -27,7 +28,6 @@ This is a code base of todo-api's examples written in ES6 for study purposes.
 * **koa-mongoose-api**
 * **koa-knex-api**
 * **koa-sequelize-api**
-* **koa-rethinkdb-api**
 * **koa-leveldb-api**
 * **koa-redis-api**
 * **koa-couchdb-api**
