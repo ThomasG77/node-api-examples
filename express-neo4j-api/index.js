@@ -4,9 +4,11 @@ import bodyParser from 'body-parser';
 import compression from 'compression';
 import helmet from 'helmet';
 import morgan from 'morgan';
+import seraph from 'seraph';
 import config from './config.js';
 
 const app = express();
+const db = seraph(config.neo4j);
 
 app.use(morgan('common', { skip: () => config.isTest }));
 app.use(helmet());
@@ -17,7 +19,7 @@ app.use(compression());
 consign(config.consign)
   .include('models')
   .then('routes')
-  .into(app)
+  .into(app, db)
 ;
 
 app.listen(config.server.port, () => {

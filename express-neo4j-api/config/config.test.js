@@ -7,8 +7,10 @@ module.exports = {
   bodyParser: {
     extended: true
   },
-  mongodb: {
-    uri: 'mongodb://localhost:27017/express_mongodb_test'
+  neo4j: {
+    server : 'http://localhost:7474',
+    user : 'neo4j',
+    pass : '12345' 
   },
   consign: {
     verbose: false
