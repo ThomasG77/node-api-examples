@@ -1,8 +1,7 @@
-module.exports = app => {
-  const Tasks = app.models.tasks.db({
-    user: 'neo4j',
-    pass: '123'  
-  });
+import config from '../config';
+
+module.exports = (app, db) => {
+  const Tasks = app.models.tasks.db;
 
   app.get('/tasks', (req, res) => {
     Tasks.find({}, (err, tasks) => {

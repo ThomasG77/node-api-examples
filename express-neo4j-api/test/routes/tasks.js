@@ -1,14 +1,13 @@
 describe('Routes: Tasks', () => {
 
-  const Tasks = app.models.tasks.db({
-    user: 'neo4j',
-    pass: '123'  
-  });
+  const Tasks = app.models.tasks.db;
 
   let tasks = [
     { name: 'study hard!', done: false },
     { name: 'work soft!', done: false }
   ];
+
+  let savedTasks = [];
 
   function clearTasks() {
     return new Promise((resolve, reject) => {
@@ -20,17 +19,19 @@ describe('Routes: Tasks', () => {
 
   before(done => {
     clearTasks()
-      .then(_ => {
+      .then(() => {
         Tasks.save(tasks,(err, saved) => {
-          tasks = saved;
+          savedTasks = saved;
           done();
         });
-      });
+      })
+      .catch(done);
   });
 
-  after(done => { 
+  after(done => {
     clearTasks()
-      .then(() => done());
+      .then(() => done())
+      .catch(done);
   });
 
   describe('GET /tasks', () => {
@@ -40,8 +41,8 @@ describe('Routes: Tasks', () => {
           .expect(200)
           .end((err, res) => {
             expect(res.body).to.have.length(2);
-            expect(res.body).to.include(tasks[0]);
-            expect(res.body).to.include(tasks[1]);
+            expect(res.body).to.include(savedTasks[0]);
+            expect(res.body).to.include(savedTasks[1]);
             done(err);
           });
       });
@@ -66,12 +67,12 @@ describe('Routes: Tasks', () => {
   describe('GET /tasks/:id', () => {
     describe('status 200', () => {
       it('returns one task', done => {
-        request.get(`/tasks/${tasks[0].id}`)
+        request.get(`/tasks/${savedTasks[0].id}`)
           .expect(200)
           .end((err, res) => {
-            expect(res.body.id).to.eql(tasks[0].id);
-            expect(res.body.name).to.eql(tasks[0].name);
-            expect(res.body.done).to.eql(tasks[0].done);
+            expect(res.body.id).to.eql(savedTasks[0].id);
+            expect(res.body.name).to.eql(savedTasks[0].name);
+            expect(res.body.done).to.eql(savedTasks[0].done);
             done(err);
           });
       });
@@ -80,7 +81,7 @@ describe('Routes: Tasks', () => {
       it('throws error when task not exist', done => {
         request.get('/tasks/id-not-exist')
           .expect(404)
-          .end((err, res) => done(err));
+          .end(done);
       });
     });
   });
@@ -88,11 +89,11 @@ describe('Routes: Tasks', () => {
   describe('PUT /tasks/:id', () => {
     describe('status 200', () => {
       it('updates a task', done => {
-        request.put(`/tasks/${tasks[0].id}`)
+        request.put(`/tasks/${savedTasks[0].id}`)
           .send({ name: 'travel a lot!', done: true })
           .expect(200)
           .end((err, res) => {
-            expect(res.body.id).to.eql(`${tasks[0].id}`);
+            expect(res.body.id).to.eql(`${savedTasks[0].id}`);
             expect(res.body.name).to.eql('travel a lot!');
             expect(res.body.done).to.be.true;
             done(err);
@@ -104,9 +105,9 @@ describe('Routes: Tasks', () => {
   describe('DELETE /tasks/:id', () => {
     describe('status 204', () => {
       it('removes a task', done => {
-        request.delete(`/tasks/${tasks[0].id}`)
+        request.delete(`/tasks/${savedTasks[0].id}`)
           .expect(204)
-          .end((err, res) => done(err));
+          .end(done);
       });
     });
   });

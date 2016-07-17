@@ -1,23 +1,17 @@
 import model from 'seraph-model';
-import db from 'seraph';
 
-db({ 
-  user: 'neo4j',
-  pass: '123' 
-});
+module.exports = (app, db) => {
+  const tasks = model(db,'tasks');
 
-const tasks = model(db,'tasks');
+  tasks.fields = [
+    'name',
+    'done'
+  ];
 
-tasks.fields = [
-  'name',
-  'done'
-];
+  tasks.schema = {
+    name: { type: String, trim: true, required: true },
+    done: { type: Boolean }
+  };
 
-tasks.schema = {
-  name: { type: String, trim: true, required: true },
-  done: { type: Boolean }
-};
-
-module.exports = tasks;
-
-
+  return tasks;
+}
