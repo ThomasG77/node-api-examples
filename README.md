@@ -7,21 +7,32 @@ This is a code base of todo-api's examples written in ES6 for study purposes.
 
 * [express-mongoose-api](https://github.com/caio-ribeiro-pereira/node-api-examples/tree/master/express-mongoose-api)
 * [express-rethinkdb-api](https://github.com/caio-ribeiro-pereira/node-api-examples/tree/master/express-rethinkdb-api)
+* [express-redis-api](https://github.com/caio-ribeiro-pereira/node-api-examples/tree/master/express-redis-api)
 * [express-sequelize-api](https://github.com/caio-ribeiro-pereira/node-api-examples/tree/master/express-sequelize-api)
 * [express-knex-api](https://github.com/caio-ribeiro-pereira/node-api-examples/tree/master/express-knex-api)
 * [express-leveldb-api](https://github.com/caio-ribeiro-pereira/node-api-examples/tree/master/express-leveldb-api)
+* [hapi-mongoose-api](https://github.com/caio-ribeiro-pereira/node-api-examples/tree/master/hapi-mongoose-api)
 * [hapi-rethinkdb-api](https://github.com/caio-ribeiro-pereira/node-api-examples/tree/master/hapi-rethinkdb-api)
+* [hapi-leveldb-api](https://github.com/caio-ribeiro-pereira/node-api-examples/tree/master/hapi-leveldb-api)
+* [hapi-redis-api](https://github.com/caio-ribeiro-pereira/node-api-examples/tree/master/hapi-redis-api)
+* [koa-rethinkdb-api](https://github.com/caio-ribeiro-pereira/node-api-examples/tree/master/koa-rethinkdb-api)
 * [express-neo4j-api](https://github.com/caio-ribeiro-pereira/node-api-examples/tree/master/tree/master/express-neo4j-api)
-
 
 ## TODO
 
-* **express-redis-api**
-* **hapi-mongoose-api**
+* **express-couchdb-api**
+* **express-neo4j-api**
 * **hapi-sequelize-api**
 * **hapi-knex-api**
-* **hapi-redis-api**
-* **hapi-leveldb-api**
+* **hapi-couchdb-api**
+* **hapi-neo4j-api**
+* **koa-mongoose-api**
+* **koa-knex-api**
+* **koa-sequelize-api**
+* **koa-leveldb-api**
+* **koa-redis-api**
+* **koa-couchdb-api**
+* **koa-neo4j-api**
 
 ## Setup
 

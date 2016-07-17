@@ -65,7 +65,7 @@ module.exports = (app, db) => {
       return done(validation.errors);
     },
     delete(taskId, done) {
-      return db.del(`${this.namespace}_${taskId}`, done);
+      db.del(`${this.namespace}_${taskId}`, done);
     }
   };
   return Tasks;

@@ -1,0 +1,5 @@
+node_modules
+.DS_Store
+npm-debug.log
+hapi_leveldb
+hapi_leveldb_test
