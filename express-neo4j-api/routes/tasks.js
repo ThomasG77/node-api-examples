@@ -1,7 +1,5 @@
-import config from '../config';
-
-module.exports = (app, db) => {
-  const Tasks = app.models.tasks.db;
+module.exports = (app) => {
+  const Tasks = app.models.tasks;
 
   app.get('/tasks', (req, res) => {
     Tasks.find({}, (err, tasks) => {
@@ -16,14 +14,13 @@ module.exports = (app, db) => {
     const { taskId } = req.params;
     Tasks.read(taskId, (err, task) => {
       if (err) {
-        if(/Invalid ID/.test(err.stack)) {
+        if (err.message === 'Invalid ID' ||
+            err.neo4jException === 'NodeNotFoundException') {
           return res.status(404).end();
         }
         return res.status(412).json(err);
       }
-      if (task) {
-        return res.json(task);
-      }
+      return res.json(task);
     });
   });
 
@@ -40,15 +37,12 @@ module.exports = (app, db) => {
   app.put('/tasks/:taskId', (req, res) => {
     const { taskId } = req.params;
     const task = req.body;
-    Tasks.read(taskId, (err, result) => {
-      result = task;
-      result.id = taskId;
-      Tasks.save(result, (err, newTask) => {
-        if (err) {
-          return res.status(412).json(err);
-        }
-        return res.json(newTask);
-      });
+    Object.assign(task, { id: taskId });
+    Tasks.save(task, (saveErr, newTask) => {
+      if (saveErr) {
+        return res.status(412).json(saveErr);
+      }
+      return res.json(newTask);
     });
   });
 

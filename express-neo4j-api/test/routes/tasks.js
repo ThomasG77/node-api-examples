@@ -1,37 +1,28 @@
+/* global describe, beforeEach, it */
+/* global expect, app, request */
+
 describe('Routes: Tasks', () => {
-
-  const Tasks = app.models.tasks.db;
-
-  let tasks = [
+  const Tasks = app.models.tasks;
+  const tasks = [
     { name: 'study hard!', done: false },
     { name: 'work soft!', done: false }
   ];
+  let savedTasks;
 
-  let savedTasks = [];
-
-  function clearTasks() {
-    return new Promise((resolve, reject) => {
-      Tasks.query('MATCH (n) DELETE n', (err, ok) => {
-        err? reject(err) : resolve(ok);
-      });
-    });
-  }
-
-  before(done => {
-    clearTasks()
-      .then(() => {
-        Tasks.save(tasks,(err, saved) => {
-          savedTasks = saved;
+  beforeEach(done => {
+    savedTasks = [];
+    Tasks.query('MATCH (n) DELETE n', (err) => {
+      if (err) {
+        done(err);
+      }
+      Tasks.save(tasks[0], (errOne, taskOne) => {
+        Tasks.save(tasks[1], (errTwo, taskTwo) => {
+          savedTasks.push(taskOne);
+          savedTasks.push(taskTwo);
           done();
         });
-      })
-      .catch(done);
-  });
-
-  after(done => {
-    clearTasks()
-      .then(() => done())
-      .catch(done);
+      });
+    });
   });
 
   describe('GET /tasks', () => {
@@ -57,7 +48,7 @@ describe('Routes: Tasks', () => {
           .expect(200)
           .end((err, res) => {
             expect(res.body.name).to.eql('run fast!');
-            expect(res.body.done).to.be.false;
+            expect(res.body.done).to.eql(false);
             done(err);
           });
       });
@@ -95,7 +86,7 @@ describe('Routes: Tasks', () => {
           .end((err, res) => {
             expect(res.body.id).to.eql(`${savedTasks[0].id}`);
             expect(res.body.name).to.eql('travel a lot!');
-            expect(res.body.done).to.be.true;
+            expect(res.body.done).to.eql(true);
             done(err);
           });
       });

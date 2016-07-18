@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   isTest: false,
   server: {
     port: 3000,
@@ -8,9 +8,10 @@ module.exports = {
     extended: true
   },
   neo4j: {
-    server : 'http://localhost:7474',
+    server: 'http://localhost:7474',
     user: 'neo4j',
-    pass: '12345' 
+    pass: '12345',
+    envDb: '_dev'
   },
   consign: {
     verbose: false
