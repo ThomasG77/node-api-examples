@@ -16,6 +16,7 @@ This is a code base of todo-api's examples written in ES6 for study purposes.
 * [hapi-leveldb-api](https://github.com/caio-ribeiro-pereira/node-api-examples/tree/master/hapi-leveldb-api)
 * [hapi-redis-api](https://github.com/caio-ribeiro-pereira/node-api-examples/tree/master/hapi-redis-api)
 * [koa-rethinkdb-api](https://github.com/caio-ribeiro-pereira/node-api-examples/tree/master/koa-rethinkdb-api)
+* [express-neo4j-api](https://github.com/caio-ribeiro-pereira/node-api-examples/tree/master/tree/master/express-neo4j-api)
 
 ## TODO
 
@@ -55,6 +56,7 @@ New project's are welcome! If you want to contribute, please [click here to foll
 
 - Caio Ribeiro Pereira - [@crp_underground](https://twitter.com/crp_underground)
 - Beto Muniz - [betomuniz.com](http://betomuniz.com)
+- Itacir Ferreira Pompeu- [pompeu.github.io](http://pompeu.github.io)
 
 ## License
 
