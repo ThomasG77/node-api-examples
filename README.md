@@ -16,20 +16,19 @@ This is a code base of todo-api's examples written in ES6 for study purposes.
 * [hapi-leveldb-api](https://github.com/caio-ribeiro-pereira/node-api-examples/tree/master/hapi-leveldb-api)
 * [hapi-redis-api](https://github.com/caio-ribeiro-pereira/node-api-examples/tree/master/hapi-redis-api)
 * [koa-rethinkdb-api](https://github.com/caio-ribeiro-pereira/node-api-examples/tree/master/koa-rethinkdb-api)
+* [koa-mongoose-api](https://github.com/caio-ribeiro-pereira/node-api-examples/tree/master/koa-mongoose-api)
+* [koa-leveldb-api](https://github.com/caio-ribeiro-pereira/node-api-examples/tree/master/koa-leveldb-api)
 * [express-neo4j-api](https://github.com/caio-ribeiro-pereira/node-api-examples/tree/master/tree/master/express-neo4j-api)
 
 ## TODO
 
 * **express-couchdb-api**
-* **express-neo4j-api**
 * **hapi-sequelize-api**
 * **hapi-knex-api**
 * **hapi-couchdb-api**
 * **hapi-neo4j-api**
-* **koa-mongoose-api**
 * **koa-knex-api**
 * **koa-sequelize-api**
-* **koa-leveldb-api**
 * **koa-redis-api**
 * **koa-couchdb-api**
 * **koa-neo4j-api**
@@ -54,7 +53,7 @@ New project's are welcome! If you want to contribute, please [click here to foll
 
 ## Collaborators
 
-- Caio Ribeiro Pereira - [@crp_underground](https://twitter.com/crp_underground)
+- Caio Ribeiro Pereira - [crpwebdev.com](https://crpwebdev.com)
 - Beto Muniz - [betomuniz.com](http://betomuniz.com)
 - Itacir Ferreira Pompeu- [pompeu.github.io](http://pompeu.github.io)
 
